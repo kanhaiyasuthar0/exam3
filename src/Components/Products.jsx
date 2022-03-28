@@ -1,5 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+const ProDiv = styled.div`
+    height:300px;
+    min-width:400px;
+    max-width:500px;
+    border:2px solid black;
+    border-radius:20px;
+ `
+ const Outer = styled.div`
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    div{
+        width:100%;
+        margin-top:20px;
+    }
+ `
 
 const Products = () => {
     const [products , setProducts] = useState([]);
@@ -21,14 +39,15 @@ const Products = () => {
     }
 
 
-  return (<div style={{display:"grid" , gridTempelateColumn:"auto auto auto"}}>
+  return (<Outer style={{display:"grid" , gridTempelateColumn:"auto auto auto"}}>
    <div>Products</div>
-    {products.map((pro)=>{return <>
+    {products.map((pro)=>{return <ProDiv>
+    <img style={{width:"300px", maxWidht:"100px", maxHeight:"100px"}} src={pro.img} class="card-img-top" alt="..."/>
         <h1>{pro.name}</h1>
         <h3>{pro.category}</h3>
         <h5>{pro.price}</h5>
         <button onClick={()=>handleClick(pro)}>BUY</button>
-    </>
+    </ProDiv>
     })} 
      {/* { products.map((pro)=>{ return */}
 
@@ -50,7 +69,7 @@ const Products = () => {
      
     {/* })}  */}
   
-  </div>
+  </Outer>
   )
 }
 

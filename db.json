@@ -20,18 +20,18 @@
     "password": "123"
   },
   "products": [
-    { "name": "p1", "category": "Electronics", "price": "121" },
-    { "name": "p2", "category": "Clothing", "price": "121" },
-    { "name": "p3", "category": "Food", "price": "121" },
-    { "name": "p4", "category": "Stationary", "price": "121" },
-    { "name": "p5", "category": "Electronics", "price": "121" },
-    { "name": "p6", "category": "Clothing", "price": "121" },
-    { "name": "p7", "category": "Food", "price": "121" },
-    { "name": "p8", "category": "Stationary", "price": "121" },
-    { "name": "p9", "category": "Electronics", "price": "121" },
-    { "name": "p10", "category": "Clothing", "price": "121" },
-    { "name": "p11", "category": "Food", "price": "121" },
-    { "name": "p12", "category": "Stationary", "price": "121" }
+    { "img": "https://images.pexels.com/photos/7214628/pexels-photo-7214628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "phone", "category": "Electronics", "price": "12" },
+    { "img": "https://images.pexels.com/photos/10592540/pexels-photo-10592540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "shirt", "category": "Clothing", "price": "121" },
+    { "img": "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "tea", "category": "Food", "price": "12211" },
+    { "img":"https://images.pexels.com/photos/3358707/pexels-photo-3358707.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "book", "category": "Stationary", "price": "14521" },
+    { "img": "https://images.pexels.com/photos/7214628/pexels-photo-7214628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "phone", "category": "Electronics", "price": "121" },
+    { "img": "https://images.pexels.com/photos/10592540/pexels-photo-10592540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "shirt", "category": "Clothing", "price": "1131" },
+    { "img": "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "tea", "category": "Food", "price": "13421" },
+    { "img":"https://images.pexels.com/photos/3358707/pexels-photo-3358707.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "book", "category": "Stationary", "price": "121" },
+    { "img": "https://images.pexels.com/photos/7214628/pexels-photo-7214628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "phone", "category": "Electronics", "price": "12671" },
+    { "img": "https://images.pexels.com/photos/10592540/pexels-photo-10592540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "shirt", "category": "Clothing", "price": "121" },
+    { "img": "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "tea", "category": "Food", "price": "121" },
+    { "img":"https://images.pexels.com/photos/3358707/pexels-photo-3358707.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" , "name": "book", "category": "Stationary", "price": "12451" }
     
   ]
 }
