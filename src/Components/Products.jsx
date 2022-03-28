@@ -7,6 +7,8 @@ const ProDiv = styled.div`
     max-width:500px;
     border:2px solid black;
     border-radius:20px;
+    background:url(${({img})=>img});
+    background-size: cover
  `
  const Outer = styled.div`
     width:100%;
@@ -41,8 +43,8 @@ const Products = () => {
 
   return (<Outer style={{display:"grid" , gridTempelateColumn:"auto auto auto"}}>
    <div>Products</div>
-    {products.map((pro)=>{return <ProDiv>
-    <img style={{width:"300px", maxWidht:"100px", maxHeight:"100px"}} src={pro.img} class="card-img-top" alt="..."/>
+    {products.map((pro)=>{return <ProDiv img={pro.img}>
+    {/* <img style={{width:"300px", maxWidht:"100px", maxHeight:"100px"}} src={pro.img} class="card-img-top" alt="..."/> */}
         <h1>{pro.name}</h1>
         <h3>{pro.category}</h3>
         <h5>{pro.price}</h5>
