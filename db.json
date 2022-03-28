@@ -1,0 +1,37 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": {
+    "username": "kanhaiyasuthar0@gmail.com",
+    "age": "1212",
+    "address": "121",
+    "password": "123"
+  },
+  "products": [
+    { "name": "p1", "category": "Electronics", "price": "121" },
+    { "name": "p2", "category": "Clothing", "price": "121" },
+    { "name": "p3", "category": "Food", "price": "121" },
+    { "name": "p4", "category": "Stationary", "price": "121" },
+    { "name": "p5", "category": "Electronics", "price": "121" },
+    { "name": "p6", "category": "Clothing", "price": "121" },
+    { "name": "p7", "category": "Food", "price": "121" },
+    { "name": "p8", "category": "Stationary", "price": "121" },
+    { "name": "p9", "category": "Electronics", "price": "121" },
+    { "name": "p10", "category": "Clothing", "price": "121" },
+    { "name": "p11", "category": "Food", "price": "121" },
+    { "name": "p12", "category": "Stationary", "price": "121" }
+    
+  ]
+}
