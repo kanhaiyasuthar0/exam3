@@ -23,7 +23,7 @@ function App() {
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/products' element={<Products/>}></Route>
-        <Route path='/' element={<Product/>}></Route>
+        <Route path='/:val' element={<Product/>}></Route>
       </Routes>
 
      
