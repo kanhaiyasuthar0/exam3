@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+const InnerDiv = styled.div`
+    height:300px;
+    min-width:400px;
+    max-width:500px;
+    border:2px solid black;
+    border-radius:20px;
+    background:url(${({img})=>img});
+    background-size: 100% 100%;
+
+ `
 
 const Product = () => {
     const [data , setData] = useState({})
@@ -19,12 +30,12 @@ const Product = () => {
         console.log(data)
     }
   return (
-      <>
+      <InnerDiv img={data.img} >
     <h1>{data.name}</h1>
     <h3>{data.category}</h3>
     <h3>{data.price}</h3>
     <button onClick={handleCart(data)}>BUY</button>
-      </>
+      </InnerDiv>
   )
 }
 
