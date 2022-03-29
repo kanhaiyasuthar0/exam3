@@ -1,28 +1,30 @@
-import React, { useContext } from 'react'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { AuthContext } from './Contexts/UseAuth';
+import React, { useContext, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { AuthContext } from "./Contexts/UseAuth";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import TextField from "@mui/material/TextField";
+import SendIcon from "@mui/icons-material/Send";
+import Fingerprint from "@mui/icons-material/Fingerprint";
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 
+// const Button = styled.button`
+//   color: green;
+//   font-size: 1em;
+//   margin: 1em;
+//   padding: 0.25em 1em;
+//   border: 2px solid green;
+//   border-radius: 3px;
+//   max-width:30%;
 
+//   &:hover {
+//     background-color: green;
+//     color:white;
 
-const Button = styled.button`
-  color: green;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid green;
-  border-radius: 3px;
-  max-width:30%;
-  
-
-  &:hover {
-    background-color: green;
-    color:white;
-    
-
-  }
-`;
+//   }
+// `;
 const Input = styled.input`
   color: green;
   font-size: 1em;
@@ -30,98 +32,146 @@ const Input = styled.input`
   padding: 0.25em 1em;
   border: 2px solid green;
   border-radius: 3px;
-  outline:none;
+  outline: none;
 
   &:hover {
     // border:none;
-    border-bottom:1px solid blue;
-    
+    border-bottom: 1px solid blue;
   }
 `;
 const Box = styled.div`
-  display:flex;
-  flex-direction:column;
- 
-  margin:auto;
-  justify-content:center;   
-  align-items:center;
-  &:hover {
-    
+  display: flex;
+  flex-direction: column;
 
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  &:hover {
   }
 `;
 const Select = styled.select`
-    min-width:15vw;  
-    color: green;
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid green;
-    border-radius: 3px;
-
+  min-width: 15vw;
+  color: green;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid green;
+  border-radius: 3px;
 
   &:hover {
-    
-
   }
 `;
 
-const Login = () => {
-    const {login } = useContext(AuthContext)
-    let navigate = useNavigate();
-    const [user , setUser] = useState({
-        username:"",
-        age:"",
-        address:"",
-        password:""
-      });
-      const [userd , setUserd] = useState(
-        {username:"",
-        age:"",
-        address:"",
-        password:""})
+const Login = ({}) => {
+  // const [loading, setLoading] = React.useState(true);
+  // const {login , setProgress } = useContext(AuthContext);
+  const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+   let id =  setTimeout(() => {
+      setAlert(false);
+    }, 4000);
+    return clearTimeout(id)
+  }, [alert]);
+  // function handleClick() {
+  //   setLoading(true);
     
-      const handleChange = (e)=>{
-        
-        const {name , value } = e.target;
-        
-        setUser(
-          {...user,
-          [name] : value
+  // }
+  const { login, setProgress, setToken } = useContext(AuthContext);
+  // console.log(setProgress);
+  let navigate = useNavigate();
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // console.log(name,value)
+    setUser({ ...user, [name]: value });
+    // console.log(user);
+  };
+  const handleForm = async () => {
+    console.log(user)
+    setProgress(30);
+    try {
+      let res1 = await fetch(
+        "https://masai-api-mocker.herokuapp.com/auth/login",
+        {
+          method: "POST",
+          body: JSON.stringify(user),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-        )
-        // console.log(user)
+      );
+      // console.log(res1);
+
+      let res2 = await res1.json();
+      console.log(res2)
+      if (!res2.error) {
+        login();
+        setToken(res2.token)
+        setProgress(100);
+        navigate(`/user/${user.username}`);
+      } else {
+        setAlert(true);
+        setProgress(100)
       }
-      const handleForm =  async ()=>{
-        let res1 = await fetch(" http://localhost:3004/users" )
-        let res2 = await res1.json();
-        const {username , password} = res2;
-        if(username == user.username && password== user.password){
-            login()
-            navigate("/")
-        }else{
-            prompt("Please provide the correct details")
-        }
-       
-      }
+    } catch (error) {
+      prompt("Please provide the correct details");
+    }
+    // const {username , password} = res2;
+
+    // if(username == user.username && password== user.password){
+
+    // }else{
+    //   prompt("Please provide the correct details")
+    // }
+  };
   return (
     <>
-    
-    <Box>
-    <div>UserForm</div>
-   
-    <Input name ="username"  onChange={handleChange} type="text" placeholder='Enter the name' />
-    
-  
-    <Input name='password' onChange={handleChange} type="password" placeholder='Enter password'></Input>
-    
-    
-    
-    <Button onClick={handleForm} type='submit'>Login</Button>
-    </Box>
-   
-  </>
-  )
-}
+      {alert ? (
+        <Alert variant="filled" severity="error">
+          Please Fill all the details correclty
+        </Alert>
+      ) : null}
+      <Box>
+        <Box sx={{ margin: "0.5rem", color: "green" }}>
+          {" "}
+          <VerifiedUserIcon sx={{ color: "green" }}></VerifiedUserIcon> Login
+          Form
+        </Box>
+        <TextField
+          name="username"
+          type="text"
+          onChange={handleChange}
+          id="standard-basic"
+          label="Username"
+          variant="standard"
+        />
+        {/* <Input name ="username"  onChange={handleChange} type="text" placeholder='Enter the username' /> */}
 
-export default Login
+        <TextField
+          name="password"
+          type="password"
+          onChange={handleChange}
+          id="standard-basic"
+          label="Password"
+          variant="standard"
+        />
+        {/* <Input name='password' onChange={handleChange} type="password" placeholder='Enter password'></Input> */}
+
+        <Button
+          sx={{ margin: "1.5rem", color: "green" }}
+          onClick={handleForm}
+          type="submit"
+        >
+          Login <Fingerprint sx={{ margin: "1rem" }}></Fingerprint>{" "}
+        </Button>
+      </Box>
+    </>
+  );
+};
+
+export default Login;
