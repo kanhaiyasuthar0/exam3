@@ -28,7 +28,7 @@ const Home = () => {
   return (<>
     <div>Home</div>
     <h1>Hello {userdata.username}</h1>
-    <h4>Your address is : {userdata.address}</h4>
+    <h4>Happy Shopping</h4>
   </>
   )
 }
