@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/user/:userName" element={<Home />}></Route>
         <Route path="/register" element={<Register  />}></Route>
-        <Route path="/login/" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/:val" element={<Product />}></Route>
       </Routes>
