@@ -8,7 +8,7 @@ const Home = () => {
     // console.log(userName);
     let navigate = useNavigate();
     const [userdata , setData] = useState({})
-    useEffect(()=>{
+    useEffect( ()=>{
         if(!isAuth){
             navigate("/login")
         }else{

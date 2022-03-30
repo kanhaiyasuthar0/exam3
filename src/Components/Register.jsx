@@ -72,11 +72,15 @@ const Register = () => {
     const {login , setProgress } = useContext(AuthContext);
     const [alert , setAlert] = useState(false)
     let navigate = useNavigate();
+    
     useEffect(()=>{
-    let id =   setTimeout(() => {
-        setAlert(false)
-      }, 4000);
-      return clearTimeout(id)
+      console.log("1212");
+        let id =   setTimeout(() => {
+         
+            setAlert(false)
+          }, 3000);
+          // return clearTimeout(id)
+      
     },[alert])
     const [user , setUser] = useState({
         name:"",
@@ -109,7 +113,8 @@ const Register = () => {
         console.log(user);
         if(user.name==="" || user.username==="" || user.password==="" || user.mobile==="" || user.email==="" || user.description==="" ){
           setAlert(true);
-          return;
+          
+         return;
         }
         try {
           setProgress(30)
@@ -141,18 +146,18 @@ const Register = () => {
     {/* <Box>{user}</Box> */}
 
     {/* <Input name ="username"  onChange={handleChange} type="text" placeholder='Enter the name' /> */}
-    <TextField name ="name" type="text" onChange={handleChange} id="standard-basic" label="Name" variant="standard" />
+    <TextField name ="name" type="text" onChange={handleChange}  label="Name" variant="standard" />
 
-    <TextField name ="email" type="email" onChange={handleChange} id="standard-basic" label="Email" variant="standard" />
+    <TextField name ="email" type="email" onChange={handleChange}  label="Email" variant="standard" />
     {/* <Input name ="email" onChange={handleChange} type="email" placeholder='Enter the email' /> */}
     
-    <TextField name ="username" type="text" onChange={handleChange} id="standard-basic" label="username" variant="standard" />
+    <TextField name ="username" type="text" onChange={handleChange}  label="username" variant="standard" />
     {/* <Input name ="username"  onChange={handleChange} type="text" placeholder='Enter the username' /> */}
-    <TextField name ="mobile" type="text" onChange={handleChange} id="standard-basic" label="Mobile No" variant="standard" />
+    <TextField name ="mobile" type="text" onChange={handleChange}  label="Mobile No" variant="standard" />
     {/* <Input name ="mobile"  onChange={handleChange} type="text" placeholder='Enter the mobile' /> */}
-    <TextField name ="description" type="text" onChange={handleChange} id="standard-basic" label="Description" variant="standard" />
+    <TextField name ="description" type="text" onChange={handleChange}  label="Description" variant="standard" />
     {/* <Input name ="description"  onChange={handleChange} type="text" placeholder='Enter the description' /> */}
-    <TextField name ="password" type="password" onChange={handleChange} id="standard-basic" label="Password" variant="standard" />
+    <TextField name ="password" type="password" onChange={handleChange}  label="Password" variant="standard" />
     {/* <Input name='password' onChange={handleChange} type="password" placeholder='Enter password'></Input> */}
     
     

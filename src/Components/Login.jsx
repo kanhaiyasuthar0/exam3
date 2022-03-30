@@ -67,10 +67,11 @@ const Login = ({}) => {
   // const {login , setProgress } = useContext(AuthContext);
   const [alert, setAlert] = useState(false);
 
-  useEffect(() => {
+  useEffect( () => {
    let id =  setTimeout(() => {
+     
       setAlert(false);
-    }, 4000);
+    }, 3000);
     return clearTimeout(id)
   }, [alert]);
   // function handleClick() {
@@ -84,15 +85,31 @@ const Login = ({}) => {
     username: "",
     password: "",
   });
+  const handlePress = (e)=>{
+    console.log(e.code)
+    if(e.code==="Enter"){
+      handleForm();
+    }
+    // console.log(e)
+  }
 
   const handleChange = (e) => {
+    // if (e.keyCode ==0) {
+    //   //  handleForm();
+    // }
+    console.log(e);
     const { name, value } = e.target;
     // console.log(name,value)
     setUser({ ...user, [name]: value });
     // console.log(user);
   };
   const handleForm = async () => {
-    console.log(user)
+    if( user.username==="" || user.password==="" ){
+      setAlert(true);
+      
+      return;
+    }
+    // console.log(user)
     setProgress(30);
     try {
       let res1 = await fetch(
@@ -108,7 +125,7 @@ const Login = ({}) => {
       // console.log(res1);
 
       let res2 = await res1.json();
-      console.log(res2)
+      // console.log(res2)
       if (!res2.error) {
         login();
         setToken(res2.token)
@@ -145,8 +162,9 @@ const Login = ({}) => {
         <TextField
           name="username"
           type="text"
+          onKeyPress={(e)=>handlePress(e)}
           onChange={handleChange}
-          id="standard-basic"
+          // id="standard-basic"
           label="Username"
           variant="standard"
         />
@@ -155,8 +173,9 @@ const Login = ({}) => {
         <TextField
           name="password"
           type="password"
+          onKeyPress={(e)=>handlePress(e)}
           onChange={handleChange}
-          id="standard-basic"
+          // id="standard-basic"
           label="Password"
           variant="standard"
         />
